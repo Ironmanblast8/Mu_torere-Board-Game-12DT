@@ -6,9 +6,12 @@
 
 import tkinter as tk
 from tkinter import *
+from tkinter.ttk import *
 import time
 import math
 from PIL import Image, ImageTk
+
+bgcolour = ('SkyBlue') #instead of writing the background colour each time we will set the variable here.
 
 #Intizaling the program as a function.
 def init():
@@ -19,37 +22,47 @@ def init():
     
     root = tk.Tk() 
    
-
     root.title('Mū Tōrere')
     root.geometry('1366x768')
-    root.config(bg='OliveDrab2')
+    root.config(bg=bgcolour)
         
-    boardimg = PhotoImage(file='Mū tōrere.png') #This is importing the image
-    Label(root,image=boardimg).pack() #creating the image as a label
+    boardimg = Image.open("Mū tōrere.png") #This is importing the image
+    boardimg = ImageTk.PhotoImage(boardimg)
+
+    tk.Label(root,image=boardimg, bg=bgcolour).pack(row = 0, column = 2,columnspan = 2, rowspan = 2, padx = 5, pady = 5) #creating the image as a label
+    
+    
+    
 
     checkers() #Will need to call functions here because of the mainloop
     root.mainloop() 
 
 
 def checkers():
-    global root
+    global root #grabbing the global variable root
     blue = 0
-    blueimg = []
-    bluepeice = []
-    canvas = tk.Canvas(root, bg='OliveDrab2', relief="flat", borderwidth=0, highlightthickness=0, width=0)
-    frame = tk.Frame(canvas, bg='OliveDrab2', relief="flat", borderwidth=0, highlightthickness=0, width=0)
+    red = 0
+    canvas = tk.Canvas(root, bg=bgcolour, relief="flat", borderwidth=0, highlightthickness=0, width=0)
+    frame = tk.Frame(canvas, bg=bgcolour, relief="flat", borderwidth=0, highlightthickness=0, width=0)
+    bluecheck= Image.open("bluecircle50.png")   #Opens the image
+    bluecheck = ImageTk.PhotoImage(bluecheck)   
+    redcheck= Image.open("redcircle50.png")
+    redcheck = ImageTk.PhotoImage(redcheck)
     while blue < 4:
-        bluecheck= Image.open("bluecircle50.png")
-        bluecheck = ImageTk.PhotoImage(bluecheck)
-        bluechecker_button = tk.Button(frame, image=bluecheck, compound="center", borderwidth=0,  bg='OliveDrab2', command=click)
+        #creates the button 4 times looping through a while loop
+        bluechecker_button = tk.Button(frame, image=bluecheck, compound="center", borderwidth=0,  bg=bgcolour, command=click)
         bluechecker_button.pack()
-        blue += 1
-        bluepeice.append(blueimg)
-    canvas.create_window(0, 0, anchor='nw', window=frame)
+        blue += 1 #This changes the blue variable so the while loop will eventaully stop
+    while red < 4:
+        redchecker_button = tk.Button(frame, image=redcheck, compound="center", borderwidth=0,  bg=bgcolour, command=click)
+        redchecker_button.pack()
+        red += 1
+    canvas.create_window(0, 0, anchor=N, window=frame)
     canvas.update_idletasks()
     canvas.configure(scrollregion=canvas.bbox('all'))
     canvas.pack(fill='both', expand=True, side='bottom')
     root.mainloop()
+
 
 def click():
     print("clicked")
