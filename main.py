@@ -29,7 +29,7 @@ def init():
     boardimg = Image.open("Mū tōrere.png") #This is importing the image
     boardimg = ImageTk.PhotoImage(boardimg)
 
-    tk.Label(root,image=boardimg, bg=bgcolour).pack(row = 0, column = 2,columnspan = 2, rowspan = 2, padx = 5, pady = 5) #creating the image as a label
+    tk.Label(root,image=boardimg, bg=bgcolour).pack(anchor = N) #creating the image as a label
     
     
     
@@ -42,20 +42,20 @@ def checkers():
     global root #grabbing the global variable root
     blue = 0
     red = 0
-    canvas = tk.Canvas(root, bg=bgcolour, relief="flat", borderwidth=0, highlightthickness=0, width=0)
-    frame = tk.Frame(canvas, bg=bgcolour, relief="flat", borderwidth=0, highlightthickness=0, width=0)
+    canvas = tk.Canvas(root, bg=bgcolour, relief="flat", highlightthickness=0)
+    frame = tk.Frame(canvas, bg=bgcolour, relief="flat")
     bluecheck= Image.open("bluecircle50.png")   #Opens the image
     bluecheck = ImageTk.PhotoImage(bluecheck)   
     redcheck= Image.open("redcircle50.png")
     redcheck = ImageTk.PhotoImage(redcheck)
     while blue < 4:
         #creates the button 4 times looping through a while loop
-        bluechecker_button = tk.Button(frame, image=bluecheck, compound="center", borderwidth=0,  bg=bgcolour, command=click)
+        bluechecker_button = tk.Button(image=bluecheck, compound="center", borderwidth=0,  bg=bgcolour, command=click)
         bluechecker_button.pack()
         blue += 1 #This changes the blue variable so the while loop will eventaully stop
     while red < 4:
-        redchecker_button = tk.Button(frame, image=redcheck, compound="center", borderwidth=0,  bg=bgcolour, command=click)
-        redchecker_button.pack()
+        redchecker_button = tk.Button(image=redcheck, compound="center", borderwidth=0, bg=bgcolour, command=click, highlightthickness=0)
+        redchecker_button.place(x=760, y=0)
         red += 1
     canvas.create_window(0, 0, anchor=N, window=frame)
     canvas.update_idletasks()
