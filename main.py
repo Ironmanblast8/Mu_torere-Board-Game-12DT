@@ -11,7 +11,7 @@ import time
 import math
 from PIL import Image, ImageTk
 
-bgcolour = ('SkyBlue') #instead of writing the background colour each time we will set the variable here.
+bgcolour = ('DarkRed') #instead of writing the background colour each time we will set the variable here.
 
 #Intizaling the program as a function.
 def init():
@@ -40,23 +40,34 @@ def init():
 
 def checkers():
     global root #grabbing the global variable root
-    blue = 0
-    red = 0
-    canvas = tk.Canvas(root, bg=bgcolour, relief="flat", highlightthickness=0)
+    canvas = tk.Canvas(root, bg=bgcolour, relief="flat", highlightthickness=0)  #Creating a canvas for tkinter modules
     frame = tk.Frame(canvas, bg=bgcolour, relief="flat")
     bluecheck= Image.open("bluecircle50.png")   #Opens the image
     bluecheck = ImageTk.PhotoImage(bluecheck)   
     redcheck= Image.open("redcircle50.png")
     redcheck = ImageTk.PhotoImage(redcheck)
-    while blue < 4:
+    # The board representation is
+    #       0  1
+    #    7       2
+    #        8
+    #    6       3
+    #      5   4
+    # where each number reates to the coordinates from 1 - 4 clockwise and 0 - 5 anticlockwise
+    # 8 Is not in the starting coords
+    coorddinates = [(751,6), (881,136), (881,136), (751,450), (568,6), (435,136), (435,136), (568,450)] 
+
+    for x,y in coorddinates[4:]:
+        print(f"x={x}, y={y}")
+
+    for num in range(4,8): # will only grab the last 4 from the coordinates not doing 5:8 from the list cause it starts at 0 not 1
         #creates the button 4 times looping through a while loop
         bluechecker_button = tk.Button(image=bluecheck, compound="center", borderwidth=0,  bg=bgcolour, command=click)
-        bluechecker_button.pack()
-        blue += 1 #This changes the blue variable so the while loop will eventaully stop
-    while red < 4:
+        #bluechecker_button.place(x=coorddinates_x[num])
+        #bluechecker_button.place(y=coorddinates_y[num])
+    for num in range(4):
         redchecker_button = tk.Button(image=redcheck, compound="center", borderwidth=0, bg=bgcolour, command=click, highlightthickness=0)
-        redchecker_button.place(x=760, y=0)
-        red += 1
+        #redchecker_button.place(x=coorddinates_x[num])
+        #redchecker_button.place(y=coorddinates_y[num])
     canvas.create_window(0, 0, anchor=N, window=frame)
     canvas.update_idletasks()
     canvas.configure(scrollregion=canvas.bbox('all'))
@@ -70,4 +81,3 @@ def click():
 #If the name of the program is called main it will run everything below.
 if __name__ == '__main__':
     init()
-    
