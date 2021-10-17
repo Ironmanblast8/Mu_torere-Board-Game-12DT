@@ -9,6 +9,7 @@ from tkinter import *
 from tkinter.ttk import *
 import time
 import math
+import json
 from PIL import Image, ImageTk
 
 bgcolour = ('DarkRed') #instead of writing the background colour each time we will set the variable here.
@@ -33,7 +34,7 @@ def init():
     
     
     
-
+    help()
     checkers() #Will need to call functions here because of the mainloop
     root.mainloop() 
 
@@ -74,6 +75,11 @@ def checkers():
     canvas.pack(fill='both', expand=True, side='bottom')
     root.mainloop()
 
+def help():
+    help_file = open('helptext.json', 'r')
+    help = json.load(help_file, strict=False)
+    for i in help['english']['text']:
+        print(i)
 
 def click():
     print("clicked")
