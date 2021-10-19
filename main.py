@@ -14,6 +14,8 @@ from PIL import Image, ImageTk
 
 bgcolour = ('DarkRed') #instead of writing the background colour each time we will set the variable here.
 
+scoreboard = 0
+
 #Intizaling the program as a function.
 def init():
 
@@ -82,16 +84,19 @@ def checkers():
 def help():
     help_file = open('helptext.json', 'r')
     help = json.load(help_file, strict=False)
+    for Eng in help['english']['text']:
+        print(Eng)
+    for Mao in help['maori']['text']:
+        print(Mao)
 
-    for i in help['english']['text']:
-        print(i)
-    for p in help['maori']['text']:
-        print(p)
 
-def click():
+def click(): #this function will be run when a checker/stone is clicked
+    global scoreboard #this is grabbing the scoreboard function which is scoreboard = 0 since it's out of this fucntion it won't be affected everytime it's re run.
     print("clicked")
-    num += 1
-    print (num)
+    scoreboard += 1  #changing the scoreboard value by 1 everytime it is run.
+    print (scoreboard)
+    moves_label = tk.Label(root, text= "Moves:" + str(scoreboard), bg=bgcolour, font=('verdana', 35))  #a tk.label is creating a text under the game showing how many moves "Moves: ___ "
+    moves_label.place(x=590, y=500)
 
 #If the name of the program is called main it will run everything below.
 if __name__ == '__main__':
