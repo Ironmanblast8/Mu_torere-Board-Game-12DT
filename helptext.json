@@ -1,14 +1,18 @@
-    {
-        "english": {
-            "text": " Mu Torere is a two-player abstract strategy board game popular among Maori in New Zealand. The game is played on an 8-pointed star-shaped board including one point in the centre and spaces on each corner point.
-            Each player begins with four pieces on four adjacent spots at the star's corner points, with the centre point vacant.
-            Each player takes a turn moving one piece to the centre point or from one corner point to the adjacent corner point. If one or both adjoining locations to the player's piece are occupied by the opponent's piece, the piece can only be moved to the central point.
-            The goal is to stop the opponent's pieces from moving any farther."
-        },
-        "maori": {
-            "text": "Ko Mu Torere tetahi kaitakaro poari rautaki takaro takirua takirua e paingia ana e nga Maori o Niu Tireni. Ka takarohia te keemu ki runga i te poari ahua whetu 8-tohu tae atu ki te piro i te puku me nga waahi kei ia pito o te kokonga.
-            Ka tiimata te kaitakaro ki nga waahanga e wha kei runga i nga waahi e wha e piri ana i nga pito o te kokonga o te whetu, ka waatea te tohu o waenganui.
-            Ka huri te kaitakaro ki te neke i tetahi waahanga ki te waahi waenga mai i tetahi tohu ki tetahi ki te taha o te kokonga. Mena kotahi, e rua ranei nga waahi e hono ana ki te waahanga o te kaitakaro e nohoia ana e te waahanga o te hoa tauwhainga, ka taea noa te neke atu ki te pito o waenga.
-            Ko te whainga ko te aukati i nga nekehanga a te hoa riri kia neke atu ki tawhiti."
-        }
+{
+    "english": {
+        "text": [
+            "Mu Torere is a two-player abstract strategy board game popular among Maori in New Zealand. The game is played on an 8-pointed star-shaped board including one point in the centre and spaces on each corner point.",
+            "Each player begins with four pieces on four adjacent spots at the star's corner points, with the centre point vacant.",
+            "Each player takes a turn moving one piece to the centre point or from one corner point to the adjacent corner point. If one or both adjoining locations to the player's piece are occupied by the opponent's piece, the piece can only be moved to the central point.",
+            "The goal is to stop the opponent's pieces from moving any farther."
+        ]
+    },
+    "maori": {
+        "text": [
+            "Ko Mu Torere tetahi kaitakaro poari rautaki takaro takirua takirua e paingia ana e nga Maori o Niu Tireni. Ka takarohia te keemu ki runga i te poari ahua whetu 8-tohu tae atu ki te piro i te puku me nga waahi kei ia pito o te kokonga.",
+            "Ka tiimata te kaitakaro ki nga waahanga e wha kei runga i nga waahi e wha e piri ana i nga pito o te kokonga o te whetu, ka waatea te tohu o waenganui.",
+            "Ka huri te kaitakaro ki te neke i tetahi waahanga ki te waahi waenga mai i tetahi tohu ki tetahi ki te taha o te kokonga. Mena kotahi, e rua ranei nga waahi e hono ana ki te waahanga o te kaitakaro e nohoia ana e te waahanga o te hoa tauwhainga, ka taea noa te neke atu ki te pito o waenga.",
+            "Ko te whainga ko te aukati i nga nekehanga a te hoa riri kia neke atu ki tawhiti."
+        ]
     }
+}

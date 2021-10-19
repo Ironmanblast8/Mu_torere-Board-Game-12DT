@@ -33,7 +33,6 @@ def init():
     tk.Label(root,image=boardimg, bg=bgcolour).pack(anchor = N) #creating the image as a label
     
     
-    
     help()
     checkers() #Will need to call functions here because of the mainloop
     root.mainloop() 
@@ -54,21 +53,26 @@ def checkers():
     #    6       3
     #      5   4
     # where each number reates to the coordinates from 1 - 4 clockwise and 0 - 5 anticlockwise
-    # 8 Is not in the starting coords
-    coorddinates = [(751,6), (881,136), (881,136), (751,450), (568,6), (435,136), (435,136), (568,450)] 
+    # 8 Is not in the starting coords, The bottem line isn't 0-7 so I've put number to represent
+    #                   1        2          3          4          0        7          6          5
+    coorddinates = [(751,6), (881,136), (881,316), (751,450), (568,6), (435,136), (435,316), (568,450)] 
 
-    for x,y in coorddinates[4:]:
-        print(f"x={x}, y={y}")
+    for x,y in coorddinates[:4]:  #creates the button 4 times looping through a while loop / The :4 also means it only grabs the first 4
+        redx = (f"{x}")
+        redy = (f"{y}")
+        redchecker_button = tk.Button(image=redcheck, compound="center", borderwidth=0, bg=bgcolour, command=click, highlightthickness=0)     
+        redchecker_button.place(x=redx)  #This is where it places on either x or y axis depending on the coordinates from the top list
+        redchecker_button.place(y=redy)
+        print (redx)
+        print (redy)
 
-    for num in range(4,8): # will only grab the last 4 from the coordinates not doing 5:8 from the list cause it starts at 0 not 1
-        #creates the button 4 times looping through a while loop
-        bluechecker_button = tk.Button(image=bluecheck, compound="center", borderwidth=0,  bg=bgcolour, command=click)
-        #bluechecker_button.place(x=coorddinates_x[num])
-        #bluechecker_button.place(y=coorddinates_y[num])
-    for num in range(4):
-        redchecker_button = tk.Button(image=redcheck, compound="center", borderwidth=0, bg=bgcolour, command=click, highlightthickness=0)
-        #redchecker_button.place(x=coorddinates_x[num])
-        #redchecker_button.place(y=coorddinates_y[num])
+    for x,y in coorddinates[4:]: #this also creates the button 4 times with the 4: it grapbs the last 4 numberes in the list
+        bluex = (f"{x}") #this convents in the list to a tuple by defining the first one x and the other y.
+        bluey = (f"{y}") 
+        bluechecker_button = tk.Button(image=bluecheck, compound="center", borderwidth=0,  bg=bgcolour, command=click, highlightthickness=0)
+        bluechecker_button.place(x=bluex)
+        bluechecker_button.place(y=bluey)
+
     canvas.create_window(0, 0, anchor=N, window=frame)
     canvas.update_idletasks()
     canvas.configure(scrollregion=canvas.bbox('all'))
@@ -78,11 +82,16 @@ def checkers():
 def help():
     help_file = open('helptext.json', 'r')
     help = json.load(help_file, strict=False)
+
     for i in help['english']['text']:
         print(i)
+    for p in help['maori']['text']:
+        print(p)
 
 def click():
     print("clicked")
+    num += 1
+    print (num)
 
 #If the name of the program is called main it will run everything below.
 if __name__ == '__main__':
