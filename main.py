@@ -34,7 +34,6 @@ def init():
 
     tk.Label(root,image=boardimg, bg=bgcolour).pack(anchor = N) #creating the image as a label
     
-    
     help()
     checkers() #Will need to call functions here because of the mainloop
     root.mainloop() 
@@ -92,10 +91,14 @@ def help():
 
 def click(): #this function will be run when a checker/stone is clicked
     global scoreboard #this is grabbing the scoreboard function which is scoreboard = 0 since it's out of this fucntion it won't be affected everytime it's re run.
+    global bluechecker_button
     print("clicked")
+
+    tk.Button.place (x=659, y=226)
+    
     scoreboard += 1  #changing the scoreboard value by 1 everytime it is run.
     print (scoreboard)
-    moves_label = tk.Label(root, text= "Moves:" + str(scoreboard), bg=bgcolour, font=('verdana', 35))  #a tk.label is creating a text under the game showing how many moves "Moves: ___ "
+    moves_label = tk.Label(root, text= "Moves:" + str(scoreboard), bg=bgcolour, font=('verdana', 35), fg='pink')  #a tk.label is creating a text under the game showing how many moves "Moves: ___ "
     moves_label.place(x=590, y=500)
 
 #If the name of the program is called main it will run everything below.
